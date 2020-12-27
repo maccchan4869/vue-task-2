@@ -48,7 +48,7 @@ export default {
       selectedYear: 2018,
       selectedMonth: 1,
       selectedDay: 1,
-      maxDay: '',
+      maxDay: 0,
       yearOptions: []
     };
   },
