@@ -58,7 +58,7 @@ export default {
   },
   created() {
     this.getMaxDay();
-    this.yearOptions = definition.createYearOptions();
+    definition.createYearOptions(this.yearOptions);
   },
   methods: {
     // 最大日数を取得

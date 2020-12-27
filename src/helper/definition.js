@@ -1,12 +1,15 @@
-// 年の選択肢を取得
 const era = {
   reiwa: 2018,
   heisei: 1988,
   showa: 1925
 }
 
-const createYearOptions = () => {
-  let yearOptions = [];
+/**
+ * 年の選択肢を取得
+ * 
+ * @param {object} yearOptions -  選択リスト 
+ */
+const createYearOptions = (yearOptions) => {
   for(let i = 1980; i < 2025; i++ ) {
     switch (true) {
       case i > era.reiwa:
