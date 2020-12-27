@@ -5,9 +5,9 @@
       <div class="separate">
         <p class="has-text-info">-  性別 -</p>
         <div class="columns is-vcentered divAns">
-          <input type="radio" value="true" v-model="selectedGender">
+          <input type="radio" value="0" v-model="selectedGender">
           <label>男性</label>
-          <input type="radio" value="false" v-model="selectedGender">
+          <input type="radio" value="1" v-model="selectedGender">
           <label>女性</label>
         </div>
       </div>
@@ -39,6 +39,7 @@
 <script>
 import Header from '@/components/Header.vue'
 import TransButton from '@/components/TransButton.vue'
+import definition from "@/helper/definition"
 
 export default {
   data: () => {
@@ -48,12 +49,7 @@ export default {
       selectedMonth: 1,
       selectedDay: 1,
       maxDay: '',
-      yearOptions: [],
-      era: {
-        reiwa: 2018,
-        heisei: 1988,
-        showa: 1925
-      }
+      yearOptions: []
     };
   },
   components: {
@@ -62,7 +58,7 @@ export default {
   },
   created() {
     this.getMaxDay();
-    this.createYearOptions();
+    this.yearOptions = definition.createYearOptions();
   },
   methods: {
     // 最大日数を取得
@@ -70,23 +66,6 @@ export default {
       // 年、月どちらかが変更された場合、必ず1日に戻す
       this.selectedDay = 1;
       this.maxDay = new Date(this.selectedYear, this.selectedMonth, 0).getDate();
-    },
-
-    // 年の選択肢を取得
-    createYearOptions() {
-      for(let i = 1980; i < 2025; i++ ) {
-        switch (true) {
-          case i > this.era.reiwa:
-            this.yearOptions.push({year: i, text: `${i}年（令和${i - this.era.reiwa}）`});
-            break;
-          case i > this.era.heisei && i <= this.era.reiwa: 
-            this.yearOptions.push({year: i, text: `${i}年（平成${i - this.era.heisei}）`});
-            break;
-          default:
-            this.yearOptions.push({year: i, text: `${i}年（昭和${i - this.era.showa}）`});
-            break;
-        }
-      }
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <button class="button is-primary transBtn" v-if="this.back !== ''" @click="backPage">＜ 前へ戻る</button>
-    <button class="button is-primary transBtn" v-if="this.next !== ''" @click="nextPage">次へ進む ＞</button>
+    <button class="button is-primary transBtn" v-if="this.back" @click="backPage">＜ 前へ戻る</button>
+    <button class="button is-primary transBtn" v-if="this.next" @click="nextPage">次へ進む ＞</button>
   </div>
 </template>
 
