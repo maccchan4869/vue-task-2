@@ -5,9 +5,9 @@
       <div class="separate">
         <p class="has-text-info">-  性別 -</p>
         <div class="columns is-vcentered divAns">
-          <input type="radio" value="0" v-model="selectedGender">
+          <input type="radio" value="0" v-model="selectedGender" @change="commitGender">
           <label>男性</label>
-          <input type="radio" value="1" v-model="selectedGender">
+          <input type="radio" value="1" v-model="selectedGender" @change="commitGender">
           <label>女性</label>
         </div>
       </div>
@@ -15,24 +15,24 @@
         <p class="has-text-info">- 生年月日 -</p>
         <div class="columns is-vcentered divAns divSelect">
           <div class="select">
-            <select v-model="selectedYear" @change="getMaxDay">
+            <select v-model="selectedYear" @change="commitYear">
               <option v-for="yearOption in yearOptions" :value="yearOption.year" v-bind:key="yearOption.year">{{ yearOption.text }}</option>
             </select>
           </div><label>年</label>
           <div class="select">
-            <select v-model="selectedMonth" @change="getMaxDay">
+            <select v-model="selectedMonth" @change="commitMonth">
               <option v-for="month in 12" :value="month" v-bind:key="month">{{ month }}</option>
             </select>
           </div><label>月</label>
           <div class="select">
-            <select v-model="selectedDay">
+            <select v-model="selectedDay" @change="commitDay">
               <option v-for="day in maxDay" :value="day" v-bind:key="day">{{ day }}</option>
             </select>
           </div><label>日</label>
         </div>
       </div>
     </div>
-    <TransButton next="Question" back=""/>
+    <TransButton next="Question" back="" nextText="次へ進む ＞"/>
   </div>
 </template>
 
@@ -57,6 +57,10 @@ export default {
     TransButton
   },
   created() {
+    this.selectedGender = this.$store.state.selectedGender;
+    this.selectedYear = this.$store.state.selectedYear;
+    this.selectedMonth = this.$store.state.selectedMonth;
+    this.selectedDay = this.$store.state.selectedDay;
     this.getMaxDay();
     definition.createYearOptions(this.yearOptions);
   },
@@ -66,6 +70,20 @@ export default {
       // 年、月どちらかが変更された場合、必ず1日に戻す
       this.selectedDay = 1;
       this.maxDay = new Date(this.selectedYear, this.selectedMonth, 0).getDate();
+    },
+    commitGender() {
+      this.$store.commit('commitGender', this.selectedGender);
+    },
+    commitYear() {
+      this.$store.commit('commitYear', this.selectedYear);
+      this.getMaxDay();
+    },
+    commitMonth() {
+      this.$store.commit('commitMonth', this.selectedMonth);
+      this.getMaxDay();
+    },
+    commitDay() {
+      this.$store.commit('commitDay', this.selectedDay);
     }
   }
 }

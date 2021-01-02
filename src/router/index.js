@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Information from '../views/Information.vue'
 import Question from '../views/Question.vue'
 import Consultation from '../views/Consultation.vue'
+import Confirm from '../views/Confirm.vue'
 
 const routes = [
   {
@@ -32,6 +33,11 @@ const routes = [
     path: '/consultation',
     name: 'Consultation',
     component: Consultation
+  },
+  {
+    path: '/confirm',
+    name: 'Confirm',
+    component: Confirm
   }
 ]
 

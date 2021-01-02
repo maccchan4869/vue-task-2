@@ -4,10 +4,10 @@
       <Header msg="ご相談内容を入力してください" index="3"/>
       <div class="separate">
         <p class="has-text-info">- 相談内容 -</p>
-        <textarea v-model="consultation" class="inputText"></textarea>
+        <textarea v-model="consultation" class="inputText" @change="commitConsultation"></textarea>
       </div>
     </div>
-    <TransButton next="Consultation" back="Question"/>
+    <TransButton next="Confirm" back="Question" nextText="次へ進む ＞"/>
   </div>
 </template>
 
@@ -21,10 +21,18 @@ export default {
       consultation: ''
     };
   },
+  created() {
+    this.consultation = this.$store.state.consultation;
+  },
   components: {
     Header,
     TransButton
   },
+  methods: {
+    commitConsultation() {
+      this.$store.commit('commitConsultation', this.consultation);
+    }
+  }
 }
 </script>
 
