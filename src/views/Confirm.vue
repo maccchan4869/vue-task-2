@@ -41,7 +41,7 @@ export default {
     TransButton
   },
   computed: {
-     getAns() {
+    getAns() {
       return this.$store.getters.getQuestionAns;
     }
   }

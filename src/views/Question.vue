@@ -47,9 +47,9 @@ export default {
     };
   },
   created() {
-    this.insurance = this.$store.state.insurance;
-    this.hospital = this.$store.state.hospital;
-    this.surgery = this.$store.state.surgery;
+    this.insurance = this.$store.getters.getInsurance;
+    this.hospital = this.$store.getters.getHospital;
+    this.surgery = this.$store.getters.getSurgery;
   },
   components: {
     Header,

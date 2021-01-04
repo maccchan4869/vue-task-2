@@ -52,6 +52,30 @@ export default createStore({
   modules: {
   },
   getters: {
+    getSelectedGender: state => {
+      return state.selectedGender;
+    },
+    getSelectedYear: state => {
+      return state.selectedYear;
+    },
+    getSelectedMonth: state => {
+      return state.selectedMonth;
+    },
+    getSelectedDay: state => {
+      return state.selectedDay;
+    },
+    getInsurance: state => {
+      return state.insurance;
+    },
+    getHospital: state => {
+      return state.hospital;
+    },
+    getSurgery: state => {
+      return state.surgery;
+    },
+    getConsultation: state => {
+      return state.consultation;
+    },
     getQuestionAns: state => {
       return {
         gender: state.selectedGender === gender.male ? '男性' : '女性',

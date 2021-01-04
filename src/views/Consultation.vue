@@ -22,7 +22,7 @@ export default {
     };
   },
   created() {
-    this.consultation = this.$store.state.consultation;
+    this.consultation = this.$store.getters.getConsultation;
   },
   components: {
     Header,

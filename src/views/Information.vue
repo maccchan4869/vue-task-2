@@ -57,10 +57,10 @@ export default {
     TransButton
   },
   created() {
-    this.selectedGender = this.$store.state.selectedGender;
-    this.selectedYear = this.$store.state.selectedYear;
-    this.selectedMonth = this.$store.state.selectedMonth;
-    this.selectedDay = this.$store.state.selectedDay;
+    this.selectedGender = this.$store.getters.getSelectedGender;
+    this.selectedYear = this.$store.getters.getSelectedYear;
+    this.selectedMonth = this.$store.getters.getSelectedMonth;
+    this.selectedDay = this.$store.getters.getSelectedDay;
     this.getMaxDay();
     definition.createYearOptions(this.yearOptions);
   },
